@@ -1,5 +1,7 @@
-#E Commerce Application
-This application allows a user to add a new employee, update the role for the employee.
+# E Commerce Application
+This application allows a user to add and update products, categories and tags for their business.
+
+
 
 **Link** 
 
@@ -21,7 +23,8 @@ The link below is to run the video demonstrating the application.
 
 1.  Clone the repository
 2.  Change into the directory that the application was cloned into and Run npm i to install node modules.
-3.  On the commange line enter npm start which will invoke the application.
+3.  On the commange line enter node seeds/index.js to put default values into each of the models.
+4.  On the commange line enter npm start which will start the server and allow client requests to be made.
 
 **Application Display**
 
