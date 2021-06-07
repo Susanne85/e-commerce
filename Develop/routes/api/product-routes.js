@@ -106,11 +106,8 @@ router.put('/:id', async (request, response) => {
       ProductTag.destroy({ where: { id: productTagsToRemove } }),
       ProductTag.bulkCreate(newProductTags),
     ]);
-
-    let finalUpdatedProduct = [];
-    finalUpdatedProduct.push(product);
-    finalUpdatedProduct.push(updatedProductTags);
-    response.status(200).json(finalUpdatedProduct);
+    
+    response.status(200).json(product);
   } catch (error) {
     response.status(400).json(error);
   }
@@ -126,7 +123,7 @@ router.delete('/:id', async (request, response) => {
     });
 
     if (!productData) {
-      response.status(404).json({ message: 'No Product found for id ' + request.params.id });
+      response.status(404).json({ message: 'No Product for id ' + request.params.id + ' was found, so it was not deleted' });
       return;
     }
 

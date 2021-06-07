@@ -40,7 +40,9 @@ router.post('/', async (request, response) => {
   // create a new category
   try {
     const categoryData = Category.create(request.body);
-    return response.status(200).json(categoryData);
+    categoryData.then(resolveResult => {
+      return response.status(200).json(resolveResult);
+    });
   } catch (error) {
     response.status(error).json({ message: 'Category was not added' });
   };
@@ -70,7 +72,7 @@ router.delete('/:id', async (request, response) => {
     });
 
     if (!categoryData) {
-      response.status(404).json({ message: 'Category for id ' + request.params.id + 'was not deleted' });
+      response.status(404).json({ message: 'No Category for id ' + request.params.id + ' was found, so it was not deleted' });
       return;
     }
 

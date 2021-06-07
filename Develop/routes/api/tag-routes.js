@@ -36,11 +36,14 @@ router.get('/:id', async (request, response) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', async (request, response) => {
   // create a new tag
   try {
     const tagData = Tag.create(request.body);
-    return response.status(200).json(tagData);
+    tagData.then(resolveResult => {
+      return response.status(200).json(resolveResult);
+    });
+
   } catch (error) {
     response.status(error).json({ message: 'Tag was not added' });
   };
@@ -60,7 +63,7 @@ router.put('/:id', async (request, response) => {
   }
 });
 
-router.delete('/:id', async(request, response) => {
+router.delete('/:id', async (request, response) => {
   // delete on tag by its `id` value
   try {
     const tagData = await Tag.destroy({
@@ -70,7 +73,7 @@ router.delete('/:id', async(request, response) => {
     });
 
     if (!tagData) {
-      response.status(404).json({ message: 'Tag for id ' + request.params.id + 'was not deleted' });
+      response.status(404).json({ message: 'No Tag for id ' + request.params.id + ' was found, so it was not deleted' });
       return;
     }
 
