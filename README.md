@@ -35,7 +35,6 @@ The link below is to run the video demonstrating the application.
 5.  On the commange line enter npm start which will start the server and allow client requests to be made.
 6.  In Insomnia or another tool or on the command line in VSCODE execute get, put, POST and delete commands to retrieve, update, add or delete items in the e commerce database.
 
-**Application Display**
 
 **Liscense**
 
