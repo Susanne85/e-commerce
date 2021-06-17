@@ -12,7 +12,7 @@ router.get('/', async (request, response) => {
     });
     response.status(200).json(tagData);
   } catch (error) {
-    response.status(500).json(error);
+    
   }
 });
 
